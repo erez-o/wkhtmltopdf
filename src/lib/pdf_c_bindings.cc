@@ -19,10 +19,6 @@
 // along with wkhtmltopdf.  If not, see <http://www.gnu.org/licenses/>.
 
 
-/**
- * \file pdf.h
- * \brief Provides C bindings for pdf conversion
- */
 #include "pdf_c_bindings_p.hh"
 #include "utilities.hh"
 #include <QApplication>
