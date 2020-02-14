@@ -10,45 +10,6 @@ using namespace wkhtmltopdf;
 QApplication * a = 0;
 int usage = 0;
 
-void MyPdfConverter::warning(const QString & message) {
-	if (warning_cb && globalSettings->logLevel > settings::Error) (warning_cb)(reinterpret_cast<wkhtmltopdf_converter*>(this), message.toUtf8().constData());
-}
-
-void MyPdfConverter::error(const QString & message) {
-	if (error_cb && globalSettings->logLevel > settings::None) (error_cb)(reinterpret_cast<wkhtmltopdf_converter*>(this), message.toUtf8().constData());
-}
-
-void MyPdfConverter::phaseChanged() {
-	if (phase_changed) (phase_changed)(reinterpret_cast<wkhtmltopdf_converter*>(this));
-}
-
-void MyPdfConverter::progressChanged(int progress) {
-	if (progress_changed) (progress_changed)(reinterpret_cast<wkhtmltopdf_converter*>(this), progress);
-}
-
-void MyPdfConverter::finished(bool ok) {
-	if (finished_cb) (finished_cb)(reinterpret_cast<wkhtmltopdf_converter*>(this), ok);
-}
-
-MyPdfConverter::MyPdfConverter(settings::PdfGlobal * gs):
-	warning_cb(0), error_cb(0), phase_changed(0), progress_changed(0), finished_cb(0),
-	converter(*gs), globalSettings(gs) {
-
-    connect(&converter, SIGNAL(warning(const QString &)), this, SLOT(warning(const QString &)));
-	connect(&converter, SIGNAL(error(const QString &)), this, SLOT(error(const QString &)));
-	connect(&converter, SIGNAL(phaseChanged()), this, SLOT(phaseChanged()));
-	connect(&converter, SIGNAL(progressChanged(int)), this, SLOT(progressChanged(int)));
-	connect(&converter, SIGNAL(finished(bool)), this, SLOT(finished(bool)));
-}
-
-MyPdfConverter::~MyPdfConverter() {
-	delete globalSettings;
-	for (size_t i=0; i < objectSettings.size(); ++i)
-		delete objectSettings[i];
-	objectSettings.clear();
-}
-
-
 /**
  * \brief Check if the library is build against the wkhtmltopdf version of QT
  *
