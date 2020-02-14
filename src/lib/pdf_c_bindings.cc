@@ -11,31 +11,6 @@ QApplication * a = 0;
 int usage = 0;
 
 /**
- * \brief Check if the library is build against the wkhtmltopdf version of QT
- *
- * \return 1 if the library was build against the wkhtmltopdf version of QT and 0 otherwise
- */
-CAPI(int) wkhtmltopdf_extended_qt() {
-#ifdef __EXTENSIVE_WKHTMLTOPDF_QT_HACK__
-	return 1;
-#else
-	return 0;
-#endif
-}
-
-#define STRINGIZE(a) STRINGIZEE(a)
-
-/**
- * \brief Return the version of wkhtmltopdf
- * Example: 0.12.1-development. The string is utf8 encoded and is owned by wkhtmltopdf.
- *
- * \return Qt version
- */
-CAPI(const char *) wkhtmltopdf_version() {
-	return STRINGIZE(FULL_VERSION);
-}
-
-/**
  * \brief Setup wkhtmltopdf
  *
  * Must be called before any other functions.
