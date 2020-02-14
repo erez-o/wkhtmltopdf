@@ -260,7 +260,6 @@ CAPI(int) wkhtmltopdf_extended_qt() {
 #endif
 }
 
-#define STRINGIZEE(a) # a
 #define STRINGIZE(a) STRINGIZEE(a)
 
 /**
