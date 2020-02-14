@@ -6,60 +6,6 @@
 #include <QHash>
 
 #include "dllbegin.inc"
-
-/**
- * \struct wkhtmltopdf_global_settings
- * \brief A struct holding global settings
- *
- * See also \ref pagePdfGlobal
- */
-
-/**
- * \struct wkhtmltopdf_object_settings
- * \brief A struct holding object settings
- *
- * See also \ref pagePdfObject
- */
-
-/**
- * \struct wkhtmltopdf_converter
- * \brief A struct holding information related to a conversion process
- */
-
-/**
- * \typedef wkhtmltopdf_str_callback
- * \brief Function pointer type used for the error and warning callbacks
- *
- * \param converter The converter that issued the callback
- * \param str A utf8 encoded string containing the error or warning message.
- *
- * \sa wkhtmltopdf_set_error_callback, wkhtmltopdf_set_warning_callback
- */
-
-/**
- * \typedef wkhtmltopdf_int_callback
- * \brief Function pointer type used for the progress_changed and finished callbacks
- *
- * For the progress_changed callback the value indicated the progress
- * within the current phase in percent. For the finished callback the value
- * if 1 if the conversion has successful and 0 otherwise.
- *
- * \param converter The converter that issued the callback
- * \param val The integer value
- *
- * \sa wkhtmltopdf_set_progress_changed, wkhtmltopdf_set_finished_callback
- */
-
-/**
- * \typedef wkhtmltopdf_void_callback
- * \brief Function pointer type used for the phase_changed callback
- *
- * \param converter The converter that issued the callback
- *
- * \sa wkhtmltopdf_set_phase_changed_callback
- */
-
-
 using namespace wkhtmltopdf;
 QApplication * a = 0;
 int usage = 0;
